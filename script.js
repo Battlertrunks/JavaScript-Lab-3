@@ -27,6 +27,8 @@ const submissions = [
   },
 ];
 
+// --------------------------------------------------
+
 const addSubmission = (array, newName, newScore, newDate) => {
   array.push({
     name: newName,
@@ -37,15 +39,24 @@ const addSubmission = (array, newName, newScore, newDate) => {
 };
 
 addSubmission(submissions, "Evan", 86, "2022-02-09");
+console.log(submissions);
+
+// ----------------------------------------------------
 
 const deleteSubmissionByIndex = (array, index) => array.splice(index, 1);
 deleteSubmissionByIndex(submissions, 1);
+console.log(submissions);
+
+// ----------------------------------------------------
 
 const deleteSubmissionByName = (array, name) => {
   const indexName = array.findIndex((item) => item.name === name);
   array.splice(indexName, 1);
 };
 deleteSubmissionByName(submissions, "Jill");
+console.log(submissions);
+
+// ----------------------------------------------------
 
 const editSubmission = (array, index, score) => {
   array[index].score = score;
@@ -55,10 +66,14 @@ const editSubmission = (array, index, score) => {
 editSubmission(submissions, 1, 54);
 console.log(submissions);
 
+// ----------------------------------------------------
+
 const findSubmissionsByName = (array, name) =>
   array.find((item) => item.name == name);
 
 console.log(findSubmissionsByName(submissions, "Jane"));
+
+// ----------------------------------------------------
 
 const findLowestScore = (array) => {
   let lowestScore = array[0].score;
@@ -72,6 +87,8 @@ const findLowestScore = (array) => {
 
 console.log(findLowestScore(submissions));
 
+// ----------------------------------------------------
+
 const findAverageScore = (array) => {
   let total = 0;
   for (let score of array) {
@@ -81,13 +98,41 @@ const findAverageScore = (array) => {
 };
 console.log(findAverageScore(submissions));
 
+// ----------------------------------------------------
+
 const filterPassing = (array) => {
   return array.filter((item) => item.passed);
 };
 console.log(filterPassing(submissions));
+
+// ----------------------------------------------------
 
 const filter90AndAbove = (array) => {
   return array.filter((item) => item.score >= 90);
 };
 
 console.log(filter90AndAbove(submissions));
+
+// ----------------------------------------------------
+
+const createRange = (start, end) => {
+  let arr = [];
+  while (start <= end) {
+    arr.push(start);
+    start++;
+  }
+  return arr;
+};
+
+console.log(createRange(2, 5));
+
+// -----------------------------------------------------
+
+const countElements = (array) => {
+  let obj = {};
+  array.forEach((letter) => (obj[letter] = 0));
+  array.forEach((letter) => (obj[letter] += 1));
+  return obj;
+};
+
+console.log(countElements(["a", "b", "a", "c", "a", "b"]));
